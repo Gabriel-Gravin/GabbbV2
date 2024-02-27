@@ -1,9 +1,9 @@
 ---
-layout: home
-search_exclude: true
+layout: default
+title: Student Blog
 ---
-A modified blog for CSA Based on Fastpages- Tirth Thakkar & Haseeb Beg   
 
+## Gabe's Toontastic New Website!! 
+8/23/23 I got my website to work!
 
-
-# Posts
+![Alt text](<Comp Sci Life Story (2).png>)
