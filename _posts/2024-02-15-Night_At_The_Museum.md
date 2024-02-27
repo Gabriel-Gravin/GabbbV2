@@ -3,7 +3,7 @@ toc: true
 comments: true
 layout: post
 title: Night@TheMuseum
-type: plans
+type: hacks
 courses: { compsci: {week: 23} }
 ---
 
