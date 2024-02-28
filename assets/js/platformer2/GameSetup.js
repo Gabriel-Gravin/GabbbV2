@@ -17,6 +17,8 @@ import FlyingGoomba from './FlyingGoomba.js';
 import BlockPlatform from './BlockPlatform.js';
 import Mushroom from './Mushroom.js';
 import Coin from './Coin.js';
+import Minecart from './Minecart.js';
+import Slime from './Slime.js';
 
 
 /* Coding Style Notes
@@ -169,10 +171,12 @@ const GameSetup = {
     assets: {
       obstacles: {
         tube: { src: "/images/platformer/obstacles/tube.png" },
-        coin: { src: "/images/platformer/obstacles/coin.png"},
-        tree: { src: "/images/platformer/obstacles/tree.png"}
+        coin: { src: "/images/platformer/obstacles/coin.png" },
+        tree: { src: "/images/platformer/obstacles/tree.png" },
+        minecart: { src: "/images/platformer/obstacles/minecart.png" }
       },
       platforms: {
+        slime: { src: "/images/platformer/platforms/slime.png" },
         grass: { src: "/images/platformer/platforms/grass.png" },
         alien: { src: "/images/platformer/platforms/alien.png" },
         bricks: { src: "/images/platformer/platforms/brick_wall.png" },
@@ -199,7 +203,8 @@ const GameSetup = {
         loading: { src: "/images/platformer/backgrounds/greenscreen.png" },
         complete: { src: "/images/platformer/backgrounds/OneStar.png" },
         complete2: { src: "/images/platformer/backgrounds/TwoStar.png" },
-        end: { src: "/images/platformer/backgrounds/Congratulations!!!.png" }
+        end: { src: "/images/platformer/backgrounds/Congratulations!!!.png" },
+        mine: { src: "/images/platformer/backgrounds/mine.jpg" }
       },
       players: {
         mario: {
@@ -411,6 +416,22 @@ const GameSetup = {
         ];
         // Space Game Level added to the GameEnv ...
         new GameLevel( {tag: "space", callback: this.playerOffScreenCallBack, objects: spaceGameObjects} );
+
+        const mineLevel = [
+          // GameObject(s), the order is important to z-index...
+          { name: 'mine', id: 'background', class: Background, data: this.assets.backgrounds.mine },
+          { name: 'grass', id: 'platform', class: Platform, data: this.assets.platforms.grass },
+          { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.block, xPercentage: 0.2, yPercentage: 0.85 },
+          { name: 'mario', id: 'player', class: Player, data: this.assets.players.mario },
+          { name: 'goomba', id: 'goomba', class: Goomba, data: this.assets.enemies.goomba, xPercentage: 0.3, minPosition: 0.05},
+          { name: 'goomba', id: 'goomba', class: Goomba, data: this.assets.enemies.goomba, xPercentage:  0.5, minPosition: 0.3 },
+          { name: 'slime', id: 'slime', class: Slime, data: this.assets.platforms.slime, xPercentage: 0.5, yPercentage: 0.85 },
+          { name: 'minecart', id: 'minecart', class: Tube, data: this.assets.obstacles.minecart },
+          { name: 'complete', id: 'background', class: BackgroundTransitions,  data: this.assets.backgrounds.complete },
+        ];
+        // mine Level added to the GameEnv ...
+        new GameLevel( {tag: "mine", callback: this.playerOffScreenCallBack, objects: mineLevel} );
+
 
         // Game Over Level definition...
         const endGameObjects = [

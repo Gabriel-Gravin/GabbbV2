@@ -298,6 +298,28 @@ export class Player extends Character {
             this.canvas.style.filter = 'invert(1)';
             GameEnv.true = true;
         }
+
+        if (this.collisionData.touchPoints.other.id === "slime") {
+            this.canvas.style.filter = 'invert(1)';
+            GameEnv.true = true;
+
+            if (this.timer === false) {
+                this.timer = true;
+                if (GameEnv.difficulty === "normal" || GameEnv.difficulty === "hard") {
+                    this.canvas.style.transition = "transform 0.5s";
+                    this.canvas.style.transform = "rotate(-90deg) translate(-26px, 0%)";
+                    playSounds.playPlayerDeath();
+                    if (this.isDying == false) {
+                        this.isDying = true;
+                        setTimeout(async() => {
+                            await GameControl.transitionToLevel(GameEnv.levels[GameEnv.levels.indexOf(GameEnv.currentLevel)]);
+                            console.log("level restart")
+                            this.isDying = false;
+                        }, 900);
+                    }
+                }
+            }
+        }
  
         if (this.collisionData.touchPoints.other.id === "jumpPlatform") {
             if (this.collisionData.touchPoints.other.left) {
