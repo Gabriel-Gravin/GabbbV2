@@ -485,7 +485,7 @@ const GameSetup = {
           { name: 'slime', id: 'slime', class: Slime, data: this.assets.platforms.slime, xPercentage: 0.55, yPercentage: 0.2 },
           { name: 'slime', id: 'slime', class: Slime, data: this.assets.platforms.slime, xPercentage: 0.55, yPercentage: 0.15 },
           { name: 'slime', id: 'slime', class: Slime, data: this.assets.platforms.slime, xPercentage: 0.55, yPercentage: 0.1 },
-          { name: 'minecart', id: 'minecart', class: Tube, data: this.assets.obstacles.minecart },
+          { name: 'minecart', id: 'tube', class: Tube, data: this.assets.obstacles.minecart },
           { name: 'complete', id: 'background', class: BackgroundTransitions,  data: this.assets.backgrounds.complete },
         ];
         // mine Level added to the GameEnv ...
